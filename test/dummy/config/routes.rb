@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount HealthcareDocumentVault::Engine => "/healthcare_document_vault"
+  mount HealthcareDocumentVault::Engine => "/vault"
 end
