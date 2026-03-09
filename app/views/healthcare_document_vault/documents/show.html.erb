@@ -1,2 +1,13 @@
-<h1>Documents#show</h1>
-<p>Find me in app/views/healthcare_document_vault/documents/show.html.erb</p>
+<h1><%= @document.title %></h1>
+
+<p>
+Category: <%= @document.category %>
+</p>
+
+<% if @document.file.attached? %>
+  <p>
+    <%= link_to "Download File", rails_blob_path(@document.file, disposition: "attachment") %>
+  </p>
+<% end %>
+
+<%= link_to "Back", documents_path %>

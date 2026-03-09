@@ -1,2 +1,11 @@
-<h1>Documents#index</h1>
-<p>Find me in app/views/healthcare_document_vault/documents/index.html.erb</p>
+<h1>Documents</h1>
+
+<%= link_to "Upload Document", new_document_path %>
+
+<ul>
+  <% @documents.each do |doc| %>
+    <li>
+      <%= link_to doc.title, document_path(doc) %>
+    </li>
+  <% end %>
+</ul>

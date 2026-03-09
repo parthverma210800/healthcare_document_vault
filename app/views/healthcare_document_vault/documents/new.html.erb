@@ -1,0 +1,31 @@
+<h1>Upload Document</h1>
+
+<%= form_with model: @document, local: true do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+  </div>
+
+  <div>
+    <%= f.label :uploaded_by %>
+    <%= f.text_field :uploaded_by %>
+  </div>
+
+  <div>
+    <%= f.label :expires_at %>
+    <%= f.date_field :expires_at %>
+  </div>
+
+  <div>
+    <%= f.label :file %>
+    <%= f.file_field :file %>
+  </div>
+  <br>
+
+  <%= f.submit "Upload Document" %>
+<% end %>

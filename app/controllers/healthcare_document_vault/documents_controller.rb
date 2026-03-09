@@ -1,29 +1,31 @@
 module HealthcareDocumentVault
-  class DocumentsController < ApplicationController
+  class DocumentsController < HealthcareDocumentVault::ApplicationController
     def index
-      render json: Document.all
+      @documents = Document.all
     end
 
     def show
-      document = Document.find(params[:id])
-      render json: document
+      @document = Document.find(params[:id])
+    end
+
+    def new
+      @document = Document.new
     end
 
     def create
-      document = Document.create!(document_params)
-      render json: document
-    end
+      @document = Document.new(document_params)
 
-    def destroy
-      document = Document.find(params[:id])
-      document.destroy
-      head :no_content
+      if @document.save
+        redirect_to document_path(@document)
+      else
+        render :new
+      end
     end
 
     private
 
     def document_params
-      params.require(:document).permit(:title, :category, :expiry_date)
+      params.require(:document).permit(:title, :category, :uploaded_by, :expires_at, :file)
     end
   end
 end
