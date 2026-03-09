@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_09_102217) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_09_102343) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_09_102217) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "healthcare_document_vault_documents", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.string "document_number"
+    t.date "expiry_date"
+    t.text "notes"
+    t.bigint "owner_id"
+    t.string "owner_type"
+    t.string "status"
+    t.string "title"
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
